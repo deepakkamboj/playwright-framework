@@ -36,12 +36,6 @@ Playwright enables fast, reliable, and capable automation across all modern brow
 
 ### Used tools for Playwright Integration Tests
 - [playwright](https://playwright.dev/) - Playwright is a Node.js library to automate tests cases for Chromium, Firefox and WebKit with a single API
-- [jest-playwright](https://github.com/playwright-community/jest-playwright) - integrates Jest and Playwright
-- [expect-playwright](https://github.com/playwright-community/expect-playwright) - provides useful expect statements
-- [Jest](https://jestjs.io) - provides the testing suite
-- [ts-jest](https://github.com/kulshekhar/ts-jest) - provides support for TypeScript
-- [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) - ESLint plugin to follow best practices and anticipate common mistakes when writing tests with jest
-- [jest-runner-groups](https://github.com/eugene-manuilov/jest-runner-groups) - A test runner that allows you to tag your tests and execute specific groups of tests with Jest.
 - [axe-playwright](https://www.npmjs.com/package/axe-playwright) - Analyses the page and identifies accessibility issues.
 - [Playwright test runner](https://github.com/microsoft/playwright-test) - Zero config cross-browser end-to-end testing for web apps. Browser automation with Playwright, Jest-like assertions and built-in support for TypeScript.
 
