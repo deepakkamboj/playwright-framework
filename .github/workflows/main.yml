@@ -32,10 +32,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Solution
-        run: npm run build
-        timeout-minutes: 15
-
       - name: Run Playwright Tests
         run: npm run test
         timeout-minutes: 15
