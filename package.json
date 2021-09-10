@@ -1,20 +1,24 @@
 {
   "name": "playwright-framework",
   "version": "1.0.0",
-  "description": "",
+  "description": "Integration Test Framework based on Playwright",
   "main": "index.js",
+  "author": "Deepak Kamboj",
+  "license": "ISC",
   "scripts": {
     "record": "npx playwright codegen",
     "test": "npx playwright test",
     "prettier": "prettier --check **/*{.ts,.tsx,.js,.json}",
     "prettier:fix": "prettier --write **/*{.ts,.tsx,.js,.json}"
   },
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": ">=12"
+  },
   "devDependencies": {
     "minimist": "1.2.5",
-    "@playwright/test": "^1.13.1",
-    "playwright-core": "^1.13.1"
+    "@playwright/test": "1.14.1",
+    "playwright": "1.14.1",
+    "playwright-core": "1.14.1"
   },
   "dependencies": {
     "@types/minimist": "1.2.0",
