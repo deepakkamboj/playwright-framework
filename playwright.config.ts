@@ -1,75 +1,12 @@
 // playwright.config.ts
 import { PlaywrightTestConfig } from '@playwright/test';
-import minimist from 'minimist';
 import path from 'path';
-
-export function getCommandParameters() {
-  return minimist(process.argv.slice(1), {
-    string: ['browser', 'grep', 'output', 'config'],
-    boolean: ['headed'],
-    number: ['timeout', 'retries '],
-    alias: {
-      g: 'grep',
-      c: 'config',
-    },
-    default: {
-      browser: 'chromium',
-      headed: true,
-      timeout: 60000,
-      retries: 2,
-    },
-  });
-}
-enum EnvironmentVariable {
-  AUTO_OPEN_DEVTOOLS = 'AUTO_OPEN_DEVTOOLS',
-  OUTPUT_DIR = 'OUTPUT_DIR',
-  BROWSER = 'BROWSER',
-  CI = 'CI',
-  COLLECT_COVERAGE = 'COLLECT_COVERAGE',
-  ENABLE_LOGGING = 'ENABLE_LOGGING',
-  GAUNTLET = 'GAUNTLET',
-  HEADLESS = 'HEADLESS',
-  IGNORE_FLAKY_TESTS = 'IGNORE_FLAKY_TESTS',
-  IGNORE_HTTPS_ERRORS = 'IGNORE_HTTPS_ERRORS',
-  INT_TESTS = 'INT_TESTS',
-  RECORD_VIDEO = 'RECORD_VIDEO',
-  RUN_ENV = 'RUN_ENV',
-  RUN_TYPE = 'RUN_TYPE',
-  SLOW_DOWN_MS = 'SLOW_DOWN_MS',
-  TEST_TIMEOUT = 'TEST_TIMEOUT', // Timeout for a test case
-  RETRIES = 'RETRIES', // Number of retry attempts for failed test
-}
-
-function getEnvironmentVariable<U extends string | number>(
-  envVar: EnvironmentVariable,
-  converter?: (arg: string) => U,
-): U {
-  const envName = EnvironmentVariable[EnvironmentVariable[envVar]];
-  const envValue = process.env[envName];
-  return converter ? converter(envValue || '') : (envValue as U);
-}
-
-function isEnabled(flag: EnvironmentVariable): boolean {
-  return getEnvironmentVariable(flag) === 'true' ? true : false;
-}
-
-function isCIRun(): boolean {
-  return isEnabled(EnvironmentVariable.CI);
-}
 
 export type BrowserType = 'chromium' | 'webkit' | 'firefox';
 export function isBrowserType(str: string): str is BrowserType {
   return str === 'chromium' || str === 'firefox' || str === 'webkit';
 }
 
-process.env.BROWSER = 'webkit';
-process.env.CI = 'true';
-process.env.HEADLESS = 'false';
-const isRunningInCI = isCIRun();
-//console.log('CI ' + isRunningInCI, getEnvironmentVariable(EnvironmentVariable.CI));
-
-const parameters = getCommandParameters();
-//console.log('Parameters: ', parameters);
 const integrationTestsPackageName = 'test';
 if (!process.env.OUTPUT_DIR) {
   process.env.OUTPUT_DIR = process.cwd();
